@@ -1,0 +1,40 @@
+<% if (certificates.length === 0) { %>
+<p><%- gettext("No results") %></p>
+<% } else { %>
+<table>
+    <tr>
+        <th><%- gettext("Course Key") %></th>
+        <th><%- gettext("Type") %></th>
+        <th><%- gettext("Status") %></th>
+        <th><%- gettext("Download URL") %></th>
+        <th><%- gettext("Grade") %></th>
+        <th><%- gettext("Last Updated") %></th>
+        <th></th>
+    </tr>
+    <% for (var i = 0; i < certificates.length; i++) {
+        var cert = certificates.at(i);
+    %>
+    <tr>
+        <td><%- cert.get("course_key") %></td>
+        <td><%- cert.get("type") %></td>
+        <td><%- cert.get("status") %></td>
+        <td>
+            <% if (cert.get("download_url")) { %>
+                <a href="<%- cert.get("download_url") %>">Download</a>
+            <% } else { %>
+                <%- gettext("Not available") %>
+            <% } %>
+        </td>
+        <td><%- cert.get("grade") %></td>
+        <td><%- cert.get("modified") %></td>
+        <td>
+            <button
+                class="btn-cert-regenerate btn-disable-on-submit"
+                data-username="<%- cert.get("username") %>"
+                data-course-key="<%- cert.get("course_key") %>"
+            ><%- gettext("Regenerate") %></button>
+        </td>
+    </tr>
+    <% } %>
+</table>
+<% } %>
