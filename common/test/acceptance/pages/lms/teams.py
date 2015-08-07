@@ -46,6 +46,26 @@ class TeamsPage(CoursePage):
         self.q(css=BROWSE_BUTTON_CSS).click()
 
 
+class MyTeamsPage(CoursePage, PaginatedUIMixin):
+    """
+    The 'My Teams' tab of the Teams page.
+    """
+
+    url_path = "teams/#teams"
+
+    def is_browser_on_page(self):
+        """Check if the "My Teams" tab is being viewed."""
+        button_classes = self.q(css=TEAMS_BUTTON_CSS).attrs('class')
+        if len(button_classes) == 0:
+            return False
+        return 'is-active' in button_classes[0]
+
+    @property
+    def team_cards(self):
+        """Get all the team cards on the page."""
+        return self.q(css='.team-card')
+
+
 class BrowseTopicsPage(CoursePage, PaginatedUIMixin):
     """
     The 'Browse' tab of the Teams page.
