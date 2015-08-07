@@ -4,10 +4,11 @@
 ;(function (define) {
     'use strict';
     define(['backbone', 'underscore', 'gettext', 'teams/js/views/team_discussion',
+            'teams/js/views/team_utils',
             'text!teams/templates/team-profile.underscore',
             'text!teams/templates/team-member.underscore'
         ],
-        function (Backbone, _, gettext, TeamDiscussionView, teamTemplate, teamMemberTemplate) {
+        function (Backbone, _, gettext, TeamDiscussionView, TeamUtils, teamTemplate, teamMemberTemplate) {
             var TeamProfileView = Backbone.View.extend({
 
                 events: {
@@ -21,12 +22,11 @@
                     this.readOnly = options.readOnly;
                     this.requestUsername = options.requestUsername;
 
-                    this.country = this.model.get('country');
-                    this.language = this.model.get('language');
+                    this.countries = TeamUtils.selectorOptionsArrayToHashWithBlank(options.countries);
+                    this.languages = TeamUtils.selectorOptionsArrayToHashWithBlank(options.languages);
 
-                    // TODO un comment this when country and language PR merge in
-                    //this.country = options.countries[this.model.get('country')];
-                    //this.language = options.languages[this.model.get('language')];
+                    this.country = this.countries[this.model.get('country')];
+                    this.language = this.languages[this.model.get('language')];
                 },
 
                 render: function () {

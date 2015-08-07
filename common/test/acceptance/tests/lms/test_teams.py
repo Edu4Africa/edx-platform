@@ -833,8 +833,8 @@ class TeamPageTest(TeamsTabBase):
                     max_size=max_size,
                     members_text='Member' if num_members == max_size else 'Members'
                 ),
-                'team_location': 'AF',
-                'team_language': 'aa'
+                'team_location': 'Afghanistan',
+                'team_language': 'Afar'
             }
         )
         self.assertEqual(self.team_page.team_members, num_members)
@@ -858,8 +858,8 @@ class TeamPageTest(TeamsTabBase):
                     num_members=num_members,
                     members_text='Member' if num_members == max_size else 'Members'
                 ),
-                'team_location': 'AF',
-                'team_language': 'aa'
+                'team_location': 'Afghanistan',
+                'team_language': 'Afar'
             }
         )
         self.assertFalse(self.team_page.team_leave_link_present)
