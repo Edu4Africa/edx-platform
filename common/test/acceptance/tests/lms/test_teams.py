@@ -84,7 +84,8 @@ class TeamsTabBase(UniqueCourseTest):
         if present:
             self.assertIn("Teams", self.tab_nav.tab_names)
             self.teams_page.visit()
-            self.assertEqual("This is the new Teams tab.", self.teams_page.get_body_text())
+            self.assertEqual(self.teams_page.active_tab(), 'teams')
+            self.assertEqual("Showing 0 out of 0 total", self.teams_page.get_body_text())
         else:
             self.assertNotIn("Teams", self.tab_nav.tab_names)
 

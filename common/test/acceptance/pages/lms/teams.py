@@ -11,6 +11,7 @@ from .fields import FieldsMixin
 
 
 TOPIC_CARD_CSS = 'div.wrapper-card-core'
+TEAMS_BUTTON_CSS = 'a.nav-item[data-index="0"]'
 BROWSE_BUTTON_CSS = 'a.nav-item[data-index="1"]'
 TEAMS_LINK_CSS = '.action-view'
 TEAMS_HEADER_CSS = '.teams-header'
@@ -35,6 +36,10 @@ class TeamsPage(CoursePage):
             description="Body text is present"
         )
         return self.q(css=main_page_content_css).text[0]
+
+    def active_tab(self):
+        """ Get the active tab. """
+        return self.q(css='.is-active').attrs('data-url')[0]
 
     def browse_topics(self):
         """ View the Browse tab of the Teams page. """
