@@ -131,6 +131,7 @@ class CourseTeamPageTest(StudioCourseTest):
         get_sudo_access(self.browser, self.page, self.other_user.get('password'))
         self._assert_current_course(visible=True)
 
+    @flaky(max_runs=10, min_passes=10)
     def test_added_users_cannot_add_or_delete_other_users(self):
         """
         Scenario: Added users cannot delete or add other users
@@ -185,6 +186,7 @@ class CourseTeamPageTest(StudioCourseTest):
         self.page.add_user_to_course("dennis@example.com")
         self._should_see_dialog('error', "Could not find user by email address")
 
+    @flaky(max_runs=10, min_passes=10)
     def test_admins_should_be_able_to_make_other_people_into_admins(self):
         """
         Scenario: Admins should be able to make other people into admins
