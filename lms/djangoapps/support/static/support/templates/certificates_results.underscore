@@ -21,6 +21,7 @@
         <td>
             <% if (cert.get("download_url")) { %>
                 <a href="<%- cert.get("download_url") %>">Download</a>
+                <span class="sr"><%- gettext("Download the user's certificate") %></span>
             <% } else { %>
                 <%- gettext("Not available") %>
             <% } %>
@@ -33,6 +34,7 @@
                 data-username="<%- cert.get("username") %>"
                 data-course-key="<%- cert.get("course_key") %>"
             ><%- gettext("Regenerate") %></button>
+            <span class="sr"><%- gettext("Regenerate the user's certificate") %></span>
         </td>
     </tr>
     <% } %>

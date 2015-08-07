@@ -1,7 +1,7 @@
 (function (define) {
     'use strict';
     define(['backbone'], function (Backbone) {
-        var Certificate = Backbone.Model.extend({
+        return Backbone.Model.extend({
             defaults: {
                 username: null,
                 course_key: null,
@@ -13,6 +13,5 @@
                 modified: null
             }
         });
-        return Certificate;
     });
 }).call(this, define || RequireJS.define);

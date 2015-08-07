@@ -9,14 +9,14 @@
         'text!support/templates/certificates.underscore',
         'text!support/templates/certificates_results.underscore'
     ], function (Backbone, _, gettext, CertCollection, certificatesTpl, resultsTpl) {
-        var view = Backbone.View.extend({
+        return Backbone.View.extend({
             events: {
-                "submit .certificates-form": "search",
-                "click .btn-cert-regenerate": "regenerateCertificate"
+                'submit .certificates-form': 'search',
+                'click .btn-cert-regenerate': 'regenerateCertificate'
             },
 
             initialize: function(options) {
-                _.bindAll(this, "search", "updateCertificates", "regenerateCertificate", "handleSearchError");
+                _.bindAll(this, 'search', 'updateCertificates', 'regenerateCertificate', 'handleSearchError');
                 this.certificates = new CertCollection({});
                 this.initialQuery = options.userQuery || null;
             },
@@ -45,7 +45,7 @@
             },
 
             renderError: function(error) {
-                var errorMsg = error || gettext("An unexpected error occurred.  Please try again.");
+                var errorMsg = error || gettext('An unexpected error occurred.  Please try again.');
                 this.setResults(errorMsg);
             },
 
@@ -53,7 +53,7 @@
 
                 // Fetch the certificate collection for the given user
                 var query = this.getUserQuery(),
-                    url = "/support/certificates?query=" + query;
+                    url = '/support/certificates?query=' + query;
 
                 // Prevent form submission, since we're handling it ourselves.
                 event.preventDefault();
@@ -80,11 +80,11 @@
                 // the updated status.
                 this.disableButtons();
                 $.ajax({
-                    url: "/certificates/regenerate",
-                    type: "POST",
+                    url: '/certificates/regenerate',
+                    type: 'POST',
                     data: {
-                        username: $button.data("username"),
-                        course_key: $button.data("course-key"),
+                        username: $button.data('username'),
+                        course_key: $button.data('course-key'),
                     },
                     context: this,
                     success: function() {
@@ -129,8 +129,7 @@
             },
 
             setResults: function(html) {
-                var $resultsDiv = $(".certificates-results", this.$el);
-                $resultsDiv.html(html);
+                $(".certificates-results", this.$el).html(html);
             },
 
             disableButtons: function() {
@@ -141,11 +140,9 @@
 
             enableButtons: function() {
                 $('.btn-disable-on-submit')
-                    .removeClass("is-disabled")
-                    .attr("disabled", false);
+                    .removeClass('is-disabled')
+                    .attr('disabled', false);
             }
         });
-
-        return view;
     });
 }).call(this, define || RequireJS.define);
