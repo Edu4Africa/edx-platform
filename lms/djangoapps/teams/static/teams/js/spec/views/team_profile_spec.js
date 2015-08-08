@@ -58,8 +58,8 @@ define([
 
             var assertTeamDetails = function(view, members) {
                 expect(view.$('.team-detail-header').text()).toBe('Team Details');
-                expect(view.$('.team-country').text()).toContain('Pakistan');
-                expect(view.$('.team-language').text()).toContain('English');
+                expect(view.$('.team-country').text()).toContain('Afghanistan');
+                expect(view.$('.team-language').text()).toContain('Afar');
                 expect(view.$('.team-capacity').text()).toContain(members + ' / 3 Members');
                 expect(view.$('.team-member').length).toBe(members);
             };
@@ -69,8 +69,8 @@ define([
                 it('can render itself', function() {
                     var requests = AjaxHelpers.requests(this);
                     var view = createTeamProfileView(requests, {
-                        country: 'Pakistan',
-                        language: 'English'
+                        country: 'AF',
+                        language: 'aa'
                     });
                     assertTeamDetails(view, 0);
                     expect(view.$('.team-member-status').length).toBe(0);
@@ -93,8 +93,8 @@ define([
                 it('can render itself', function() {
                     var requests = AjaxHelpers.requests(this);
                     var view = createTeamProfileView(requests, {
-                        country: 'Pakistan',
-                        language: 'English',
+                        country: 'AF',
+                        language: 'aa',
                         membership: [{'user':{'username': 'bilbo'}}]
                     });
                     assertTeamDetails(view, 1);
@@ -115,8 +115,8 @@ define([
                 it('cannot see invite url box if team is full', function() {
                     var requests = AjaxHelpers.requests(this);
                     var view = createTeamProfileView(requests , {
-                        country: 'Pakistan',
-                        language: 'English',
+                        country: 'AF',
+                        language: 'aa',
                         membership: [{'user':{'username': 'bilbo'}},{'user':{'username': 'bilbo1'}},{'user':{'username': 'bilbo2'}}]
                     });
 
@@ -130,8 +130,8 @@ define([
                     spyOn(TeamProfileView.prototype, 'selectText');
 
                     var view = createTeamProfileView(requests, {
-                        country: 'Pakistan',
-                        language: 'English',
+                        country: 'AF',
+                        language: 'aa',
                         membership: [{'user':{'username': 'bilbo'}}]
                     });
                     assertTeamDetails(view, 1);
