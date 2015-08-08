@@ -25,8 +25,6 @@
                     this.countries = TeamUtils.selectorOptionsArrayToHashWithBlank(options.countries);
                     this.languages = TeamUtils.selectorOptionsArrayToHashWithBlank(options.languages);
 
-                    this.country = this.countries[this.model.get('country')];
-                    this.language = this.languages[this.model.get('language')];
                 },
 
                 render: function () {
@@ -34,17 +32,9 @@
                         courseID: this.courseID,
                         discussionTopicID: this.discussionTopicID,
                         readOnly: this.readOnly,
-                        country: this.country,
-                        language: this.language,
-                        membershipText: interpolate(
-                            // Translators: The following message displays the number of members on a team.
-                            ngettext(
-                                '%(member_count)s / %(max_member_count)s Member',
-                                '%(member_count)s / %(max_member_count)s Members',
-                                this.maxTeamSize
-                            ),
-                            {member_count: this.memberships.length, max_member_count: this.maxTeamSize}, true
-                        ),
+                        country: this.countries[this.model.get('country')],
+                        language: this.languages[this.model.get('language')],
+                        membershipText: TeamUtils.teamCapacityText(this.memberships.length, this.maxTeamSize),
                         isMember: this.isUserMemberOfTeam(),
                         hasCapacity: this.memberships.length < this.maxTeamSize,
                         inviteLink: window.location +'?invite=true'

@@ -18,6 +18,19 @@
                 var map = _.object(options);
                 map[""] = "";
                 return map;
+            },
+
+
+            teamCapacityText : function(memberCount, maxMemberCount) {
+                return interpolate(
+                    // Translators: The following message displays the number of members on a team.
+                    ngettext(
+                        '%(memberCount)s / %(maxMemberCount)s Member',
+                        '%(memberCount)s / %(maxMemberCount)s Members',
+                        maxMemberCount
+                    ),
+                    {memberCount: memberCount, maxMemberCount: maxMemberCount}, true
+                )
             }
         });
 

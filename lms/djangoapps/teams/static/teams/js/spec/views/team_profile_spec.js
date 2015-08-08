@@ -27,7 +27,17 @@ define([
                 courseID: TeamDiscussionSpecHelper.testCourseID,
                 model: model,
                 maxTeamSize: options.maxTeamSize || 3,
-                requestUsername: 'bilbo'
+                requestUsername: 'bilbo',
+                countries : [
+                    ['', ''],
+                    ['US', 'United States'],
+                    ['CA', 'Canada']
+                ],
+                languages : [
+                    ['', ''],
+                    ['en', 'English'],
+                    ['fr', 'French']
+                ]
             });
             profileView.render();
             AjaxHelpers.expectRequest(
@@ -58,8 +68,8 @@ define([
 
             var assertTeamDetails = function(view, members) {
                 expect(view.$('.team-detail-header').text()).toBe('Team Details');
-                expect(view.$('.team-country').text()).toContain('Afghanistan');
-                expect(view.$('.team-language').text()).toContain('Afar');
+                expect(view.$('.team-country').text()).toContain('United States');
+                expect(view.$('.team-language').text()).toContain('English');
                 expect(view.$('.team-capacity').text()).toContain(members + ' / 3 Members');
                 expect(view.$('.team-member').length).toBe(members);
             };
@@ -69,8 +79,8 @@ define([
                 it('can render itself', function() {
                     var requests = AjaxHelpers.requests(this);
                     var view = createTeamProfileView(requests, {
-                        country: 'AF',
-                        language: 'aa'
+                        country: 'US',
+                        language: 'en'
                     });
                     assertTeamDetails(view, 0);
                     expect(view.$('.team-member-status').length).toBe(0);
@@ -93,10 +103,11 @@ define([
                 it('can render itself', function() {
                     var requests = AjaxHelpers.requests(this);
                     var view = createTeamProfileView(requests, {
-                        country: 'AF',
-                        language: 'aa',
+                        country: 'US',
+                        language: 'en',
                         membership: [{'user':{'username': 'bilbo'}}]
                     });
+                    debugger;
                     assertTeamDetails(view, 1);
                     expect(view.$('.team-member-status').text().trim()).toBe('You are a member of this team.');
 
@@ -115,8 +126,8 @@ define([
                 it('cannot see invite url box if team is full', function() {
                     var requests = AjaxHelpers.requests(this);
                     var view = createTeamProfileView(requests , {
-                        country: 'AF',
-                        language: 'aa',
+                        country: 'US',
+                        language: 'en',
                         membership: [{'user':{'username': 'bilbo'}},{'user':{'username': 'bilbo1'}},{'user':{'username': 'bilbo2'}}]
                     });
 
@@ -130,8 +141,8 @@ define([
                     spyOn(TeamProfileView.prototype, 'selectText');
 
                     var view = createTeamProfileView(requests, {
-                        country: 'AF',
-                        language: 'aa',
+                        country: 'US',
+                        language: 'en',
                         membership: [{'user':{'username': 'bilbo'}}]
                     });
                     assertTeamDetails(view, 1);
