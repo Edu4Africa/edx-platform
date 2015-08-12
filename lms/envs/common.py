@@ -359,10 +359,10 @@ FEATURES = {
     'MODE_CREATION_FOR_TESTING': False,
 
     # Courseware search feature
-    'ENABLE_COURSEWARE_SEARCH': False,
+    'ENABLE_COURSEWARE_SEARCH': True,
 
     # Dashboard search feature
-    'ENABLE_DASHBOARD_SEARCH': False,
+    'ENABLE_DASHBOARD_SEARCH': True,
 
     # log all information from cybersource callbacks
     'LOG_POSTPAY_CALLBACKS': True,
@@ -386,15 +386,15 @@ FEATURES = {
     'SOCIAL_SHARING_SETTINGS': {
         # Note: Ensure 'CUSTOM_COURSE_URLS' has a matching value in cms/envs/common.py
         'CUSTOM_COURSE_URLS': False,
-        'DASHBOARD_FACEBOOK': False,
+        'DASHBOARD_FACEBOOK': True,
         'CERTIFICATE_FACEBOOK': False,
         'CERTIFICATE_FACEBOOK_TEXT': None,
-        'DASHBOARD_TWITTER': False,
+        'DASHBOARD_TWITTER': True,
         'DASHBOARD_TWITTER_TEXT': None
     },
 
     # Course discovery feature
-    'ENABLE_COURSE_DISCOVERY': False,
+    'ENABLE_COURSE_DISCOVERY': True,
 
     # Software secure fake page feature flag
     'ENABLE_SOFTWARE_SECURE_FAKE': False,
@@ -841,7 +841,7 @@ MEDIA_ROOT = '/edx/var/edxapp/media/'
 MEDIA_URL = '/media/'
 
 # Locale/Internationalization
-TIME_ZONE = 'America/New_York'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+TIME_ZONE = 'Africa/Accra'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 LANGUAGE_CODE = 'en'  # http://www.i18nguy.com/unicode/language-identifiers.html
 # these languages display right to left
 LANGUAGES_BIDI = ("he", "ar", "fa", "ur", "fa-ir", "rtl")

@@ -150,7 +150,7 @@ FEATURES = {
     'LICENSING': False,
 
     # Enable the courseware search functionality
-    'ENABLE_COURSEWARE_INDEX': False,
+    'ENABLE_COURSEWARE_INDEX': True,
 
     # Enable content libraries search functionality
     'ENABLE_LIBRARY_INDEX': False,
@@ -405,9 +405,9 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
-DEFAULT_FROM_EMAIL = 'registration@example.com'
-DEFAULT_FEEDBACK_EMAIL = 'feedback@example.com'
-SERVER_EMAIL = 'devops@example.com'
+DEFAULT_FROM_EMAIL = 'info@edu4africa.com'
+DEFAULT_FEEDBACK_EMAIL = 'info@edu4africa.com'
+SERVER_EMAIL = 'info@edu4africa.com'
 ADMINS = ()
 MANAGERS = ADMINS
 
@@ -435,7 +435,7 @@ STATICFILES_DIRS = [
 ]
 
 # Locale/Internationalization
-TIME_ZONE = 'America/New_York'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+TIME_ZONE = 'Africa/Accra'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 LANGUAGE_CODE = 'en'  # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGES_BIDI = lms.envs.common.LANGUAGES_BIDI
 
